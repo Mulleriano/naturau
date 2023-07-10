@@ -26,7 +26,7 @@ const signInWithGoogle = () => {};
 </script>
 
 <template>
- <body class="w-100 h-100 d-flex flex-column align-center justify-center">
+ <v-main class="w-100 h-100 d-flex flex-column align-center justify-center">
     <h1>Cadastro</h1>
     <v-text-field v-model="email" label="Email" clearable hide-details="auto" class="w-75">
     </v-text-field>
@@ -36,5 +36,5 @@ const signInWithGoogle = () => {};
     <v-btn @click="signInWithGoogle" variant="outlined" size="small" class="mt-2"
       >Entre com o Google</v-btn
     >
-  </body>
+  </v-main>
 </template>

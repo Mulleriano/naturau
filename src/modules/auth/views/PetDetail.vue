@@ -1,15 +1,9 @@
 <script>
-export default {
-  methods: {
-    handleClick() {
-      this.$router.push("/pet-detail");
-    },
-  },
-};
+//
 </script>
 
 <template>
-  <v-container>
+  <v-main>
     <h2>Nosso papo agora é com X{{ petname }}</h2>
 
     <p>Qual tipo de pet você é?</p>
@@ -29,12 +23,12 @@ export default {
     </div>
     <v-btn
       size="x-large"
-      @click="handleClick"
+      @click="this.$router.push('/')"
       variant="plain"
       location="bottom"
       position="fixed"
       class="mb-5"
       >Próximo</v-btn
     >
-  </v-container>
+  </v-main>
 </template>
