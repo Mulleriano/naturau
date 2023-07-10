@@ -1,0 +1,24 @@
+<script setup>
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+</script>
+
+<template>
+  <v-app>
+    Bem vindo ao app
+    <v-main>
+      <router-view />
+      <v-card>
+        <v-bottom-navigation grow>
+          <v-btn
+            :active="route.path == '/naturau' ? true : false"
+            @click="this.$router.replace('/naturau')"
+          >
+            <v-icon> mdi-home </v-icon>
+          </v-btn>
+        </v-bottom-navigation>
+      </v-card>
+    </v-main>
+  </v-app>
+</template>
