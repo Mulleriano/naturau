@@ -1,4 +1,4 @@
-import "../firebase.config";
+import "./firebase.config";
 import App from "./App.vue";
 
 // Composables
