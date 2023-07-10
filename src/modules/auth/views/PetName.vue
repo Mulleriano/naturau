@@ -1,11 +1,5 @@
-<script>
-export default  {
-    methods: {
-    handleClick() {
-       this.$router.push("/pet-detail");
-     },
-},
-}
+<script setup>
+//
 </script>
 
 <template>
@@ -13,6 +7,6 @@ export default  {
     <v-text-field v-model="text" label="Nome do pet" clearable hide-details="auto" class="w-75">
     </v-text-field>
 
-    <v-btn size="x-large" @click="handleClick" 
+    <v-btn size="x-large" @click="this.$router.push('/pet-detail')" 
     variant="plain" location="bottom" position="fixed" class="mb-5">Próximo</v-btn>
 </template>
