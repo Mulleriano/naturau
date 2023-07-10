@@ -4,11 +4,6 @@ export const routes = [
       component: () => import ("../layouts/Access.vue"),
       children: [
         {
-          path: "access",
-          name: "Access",
-          component: () => import ("../views/Home.vue"),
-        },
-        {
           path: "login",
           name: "Login",
           component: () => import ("../views/Login.vue"),
