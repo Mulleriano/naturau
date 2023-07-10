@@ -19,10 +19,10 @@ const routes = [
     children: [
       {
         path: "",
-        name: "RestList",
+        name: "Restaurantes",
         component: () =>
           import(
-            /* webpackChunkName: "home" */ "@/modules/restaurantes/views/RestList.vue"
+            /* webpackChunkName: "home" */ "@/modules/restaurantes/views/Restaurantes.vue"
           ),
       },
     ],
