@@ -5,7 +5,7 @@ import { RouterLink, useRouter } from "vue-router";
 
 const email = ref("");
 const password = ref("");
-const errMsg = ref(); //msg para erro
+const errMsg = ref(); 
 const router = useRouter();
 
 //metodos
