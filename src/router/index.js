@@ -13,17 +13,6 @@ const routes = [
       },
     ],
   },
-  {
-    path: "/",
-    component: () => import ("@/modules/auth/layouts/acess.vue"),
-    children: [
-      {
-        path: "acess",
-        name: "Acess",
-        component: () => import ("@/modules/auth/views/home.vue"),
-      },
-    ]
-  }
 ];
 
 const router = createRouter({
