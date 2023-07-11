@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <v-main>
+ 
     <h2>Nosso papo agora é com X{{ petname }}</h2>
 
     <p>Qual tipo de pet você é?</p>
@@ -30,5 +30,5 @@
       class="mb-5"
       >Próximo</v-btn
     >
-  </v-main>
+  
 </template>
