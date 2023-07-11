@@ -9,6 +9,11 @@ export const routes = [
         component: () =>
           import("@/modules/restaurantes/views/Restaurantes.vue"),
       },
+      {
+        path: "/comidas/:id",
+        name: "Comidas",
+        component: () => import("@/modules/restaurantes/views/Comidas.vue"),
+      },
     ],
   },
 ];
