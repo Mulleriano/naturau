@@ -46,7 +46,7 @@ const signInWithGoogle = () => {
 </script>
 
 <template>
-  <v-main class="w-100 h-100 d-flex flex-column align-center justify-center">
+
     <h1>Login</h1>
     <v-text-field
       v-model="email"
@@ -82,7 +82,7 @@ const signInWithGoogle = () => {
         >Registre-se</router-link
       >
     </p>
-  </v-main>
+  
 </template>
 
 <style>
