@@ -6,7 +6,7 @@ const route = useRoute();
 
 <template>
   <v-app>
-    Bem vindo ao app
+    <v-system-bar></v-system-bar>
     <v-main>
       <router-view />
       <v-card>
@@ -16,6 +16,12 @@ const route = useRoute();
             @click="this.$router.replace('/naturau')"
           >
             <v-icon> mdi-home </v-icon>
+          </v-btn>
+          <v-btn
+            :active="route.path.includes('/comidas') ? true : false"
+            @click="this.$router.push('/comidas')"
+          >
+            <v-icon> mdi-food-drumstick </v-icon>
           </v-btn>
         </v-bottom-navigation>
       </v-card>
