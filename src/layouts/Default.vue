@@ -19,7 +19,7 @@ const route = useRoute();
           </v-btn>
           <v-btn
             :active="route.path.includes('/comidas') ? true : false"
-            @click="this.$router.push('/comidas')"
+            @click="this.$router.push('/comidas/lista')"
           >
             <v-icon> mdi-food-drumstick </v-icon>
           </v-btn>
