@@ -1,9 +1,8 @@
-import "../firebase.config";
+import "./firebase.config";
 import App from "./App.vue";
-
 // Composables
 import { createApp } from "vue";
-
+import "@/modules/restaurantes";
 // Plugins
 import { registerPlugins } from "@/plugins";
 import router from "./router";
