@@ -13,20 +13,6 @@ const routes = [
       },
     ],
   },
-  {
-    path: "/naturau",
-    component: () => import("@/layouts/Default.vue"),
-    children: [
-      {
-        path: "",
-        name: "Restaurantes",
-        component: () =>
-          import(
-            /* webpackChunkName: "home" */ "@/modules/restaurantes/views/Restaurantes.vue"
-          ),
-      },
-    ],
-  },
 ];
 
 const router = createRouter({
