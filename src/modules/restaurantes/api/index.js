@@ -1,7 +1,7 @@
 import { db } from "@/firebase.config";
 import { collection, getDocs } from "firebase/firestore";
 
-export async function list() {
+export async function lista() {
   const querySnapshot = await getDocs(collection(db, "restaurantes"));
 
   let itensLocal = [];

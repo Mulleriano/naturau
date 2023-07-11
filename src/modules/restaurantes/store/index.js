@@ -1,10 +1,10 @@
 import { reactive } from "vue";
-import { list } from "../api";
+import { lista } from "../api";
 
 export const restStore = reactive({
   restaurantes: [],
-  async getRestaurantes() {
-    const res = await list();
+  async pegarRestaurantes() {
+    const res = await lista();
     this.restaurantes = res;
   },
 });

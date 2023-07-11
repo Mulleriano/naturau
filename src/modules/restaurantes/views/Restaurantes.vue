@@ -4,7 +4,7 @@ import { restStore } from "../store";
 import RestList from "../components/RestList.vue";
 
 onMounted(() => {
-  restStore.getRestaurantes();
+  restStore.pegarRestaurantes();
 });
 </script>
 <template>
