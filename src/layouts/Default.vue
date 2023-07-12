@@ -17,6 +17,13 @@ const route = useRoute();
           >
             <v-icon> mdi-home </v-icon>
           </v-btn>
+
+          <v-btn
+            :active="route.path.includes('pedidos') ? true : false"
+            @click="this.$router.replace('/pedidos')"
+          >
+            <v-icon> mdi-list-box </v-icon>
+          </v-btn>
         </v-bottom-navigation>
       </v-card>
     </v-main>
