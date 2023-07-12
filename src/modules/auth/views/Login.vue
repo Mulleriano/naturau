@@ -21,7 +21,7 @@ const login = () => {
     //retorna uma promese
     .then((data) => {
       alert("Login realizado com sucesso!");
-      router.push("/");
+      router.push("/naturau");
     })
     .catch((error) => {
       console.log(error.code);
@@ -43,7 +43,7 @@ const signInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
     .then((result) => {
-      router.push("/");
+      router.push("/naturau");
     })
     .catch((error) => {
       alert("Algo deu errado");
