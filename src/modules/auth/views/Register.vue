@@ -1,11 +1,18 @@
 <script setup>
 import { ref } from "vue";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import { useRouter } from "vue-router";
 
 const email = ref("");
 const password = ref("");
-const router = useRouter(); 
+const confpass = ref("");
+const isFormValid = ref(true);
+const router = useRouter();
 
 //metodos
 const cadastro = () => {
@@ -14,7 +21,7 @@ const cadastro = () => {
     //retorna uma promese
     .then((data) => {
       alert("Registrado com sucesso");
-      router.push("/hello")
+      router.push("/hello");
     })
     .catch((error) => {
       console.log(error.code);
@@ -22,11 +29,24 @@ const cadastro = () => {
     });
 };
 
-const signInWithGoogle = () => {};
+const passwordconf = (value) => {
+  if (value !== password.value) return "Senha incorreta";
+  return true;
+};
+
+const signInWithGoogle = () => {
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(getAuth(), provider)
+    .then((result) => {
+      router.push("/");
+    })
+    .catch((error) => {
+      alert("Algo deu errado");
+    });
+};
 </script>
 
 <template>
-
 <v-form @submit.prevent v-model="isFormValid"
  class="w-100 h-100 d-flex align-center justify-center">
     <v-card title="Cadastro" elevation="0" class="w-75  d-flex flex-column align-center">

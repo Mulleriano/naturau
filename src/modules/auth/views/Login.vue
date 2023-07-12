@@ -1,11 +1,17 @@
 <script setup>
 import { ref } from "vue";
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, } from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import { RouterLink, useRouter } from "vue-router";
 
 const email = ref("");
 const password = ref("");
-const errMsg = ref(); 
+const isFormValid = ref(true);
+const errMsg = ref();
 const router = useRouter();
 
 //metodos
@@ -46,7 +52,6 @@ const signInWithGoogle = () => {
 </script>
 
 <template>
-
 <v-form @submit.prevent v-model="isFormValid" class="w-100 h-100 d-flex align-center justify-center">
     <v-card title="Login" elevation="0" class="w-75  d-flex flex-column align-center">
           <v-text-field
@@ -92,7 +97,6 @@ const signInWithGoogle = () => {
     </v-card-actions>
     </v-card>    
     </v-form>
-  
 </template>
 
 <style>
