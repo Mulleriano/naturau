@@ -47,9 +47,9 @@ const signInWithGoogle = () => {
 
 <template>
 
-<v-container class="w-100 h-100 d-flex align-center justify-center">
+<v-form @submit.prevent v-model="isFormValid" class="w-100 h-100 d-flex align-center justify-center">
     <v-card title="Login" elevation="0" class="w-75  d-flex flex-column align-center">
-        <v-text-field
+          <v-text-field
         variant="outlined"
       v-model="email"
       label="Email"
@@ -75,6 +75,7 @@ const signInWithGoogle = () => {
       >Entrar</v-btn
     >
         <v-btn
+        :disabled="isFormValid"
       @click="signInWithGoogle"
       variant="outlined"
       rounded="xl"
@@ -90,7 +91,7 @@ const signInWithGoogle = () => {
     </p>
     </v-card-actions>
     </v-card>    
-    </v-container>
+    </v-form>
   
 </template>
 

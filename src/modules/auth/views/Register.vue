@@ -27,7 +27,8 @@ const signInWithGoogle = () => {};
 
 <template>
 
-<v-container class="w-100 h-100 d-flex align-center justify-center">
+<v-form @submit.prevent v-model="isFormValid"
+ class="w-100 h-100 d-flex align-center justify-center">
     <v-card title="Cadastro" elevation="0" class="w-75  d-flex flex-column align-center">
         <v-text-field
         variant="outlined"
@@ -59,7 +60,7 @@ const signInWithGoogle = () => {};
     >
     </v-text-field>
     <v-card-actions class="d-flex flex-column">
-        <v-btn @click="cadastro" rounded="xl"
+        <v-btn :disabled="isFormValid" @click="cadastro" rounded="xl"
       color="#2a6141" variant="tonal" class="mt-2" block
       >Cadastrar</v-btn
     >
@@ -79,6 +80,6 @@ const signInWithGoogle = () => {};
     </p>
     </v-card-actions>
     </v-card>    
-    </v-container>
+    </v-form>
 
 </template>
