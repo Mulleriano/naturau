@@ -8,7 +8,7 @@ const password = ref("");
 const router = useRouter(); 
 
 //metodos
-const register = () => {
+const cadastro = () => {
   //precisa de .value por conta do ref()
   createUserWithEmailAndPassword(getAuth(), email.value, password.value)
     //retorna uma promese
@@ -27,14 +27,59 @@ const signInWithGoogle = () => {};
 
 <template>
 
-    <h1>Cadastro</h1>
-    <v-text-field v-model="email" label="Email" clearable hide-details="auto" class="w-75">
-    </v-text-field>
-    <v-text-field v-model="password" type="password" label="Senha" clearable hide-details="auto" class="w-75">
-    </v-text-field>
-    <v-btn @click="login" variant="outlined" size="small" class="mt-2">Cadastrar</v-btn>
-    <v-btn @click="signInWithGoogle" variant="outlined" size="small" class="mt-2"
-      >Entre com o Google</v-btn
+<v-form @submit.prevent v-model="isFormValid"
+ class="w-100 h-100 d-flex align-center justify-center">
+    <v-card title="Cadastro" elevation="0" class="w-75  d-flex flex-column align-center">
+        <v-text-field
+        variant="outlined"
+      v-model="email"
+      label="Email"
+      clearable
+      hide-details="auto"
+      class="w-100 ma-4"
     >
+    </v-text-field>
+    <v-text-field
+    variant="outlined"
+      v-model="password"
+      type="password"
+      label="Senha"
+      clearable
+      hide-details="auto"
+      class="w-100 ma-4"
+    >
+    </v-text-field>
+    <v-text-field
+    variant="outlined"
+      v-model="password"
+      type="password"
+      label="Confirme sua senha"
+      clearable
+      hide-details="auto"
+      class="w-100 ma-4"
+    >
+    </v-text-field>
+    <v-card-actions class="d-flex flex-column">
+        <v-btn :disabled="isFormValid" @click="cadastro" rounded="xl"
+      color="#2a6141" variant="tonal" class="mt-2" block
+      >Cadastrar</v-btn
+    >
+        <v-btn
+      @click="signInWithGoogle"
+      variant="outlined"
+      rounded="xl"
+      class="mt-4"
+      prepend-icon="mdi-google"
+      >Cadastre com o Google</v-btn
+    >
+    <p class="mt-4">
+      Ja tem uma conta?
+      <router-link class="text-decoration-none" to="/login"
+        >Login</router-link
+      >
+    </p>
+    </v-card-actions>
+    </v-card>    
+    </v-form>
 
 </template>

@@ -1,4 +1,4 @@
-<script>
+<script setup>
 import { ref } from "vue";
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, } from "firebase/auth";
 import { RouterLink, useRouter } from "vue-router";
@@ -47,41 +47,51 @@ const signInWithGoogle = () => {
 
 <template>
 
-    <h1>Login</h1>
-    <v-text-field
+<v-form @submit.prevent v-model="isFormValid" class="w-100 h-100 d-flex align-center justify-center">
+    <v-card title="Login" elevation="0" class="w-75  d-flex flex-column align-center">
+          <v-text-field
+        variant="outlined"
       v-model="email"
       label="Email"
       clearable
       hide-details="auto"
-      class="w-75"
+      class="w-100 ma-4"
     >
     </v-text-field>
     <v-text-field
+    variant="outlined"
       v-model="password"
       type="password"
       label="Senha"
       clearable
       hide-details="auto"
-      class="w-75"
+      class="w-100 ma-4"
     >
     </v-text-field>
     <p v-if="errMsg">{{ errMsg }}</p>
-    <v-btn @click="login" variant="outlined" size="small" class="mt-2"
-      >Logar</v-btn
+    <v-card-actions class="d-flex flex-column">
+        <v-btn @click="login" rounded="xl"
+      color="#2a6141" variant="tonal" class="mt-2" block
+      >Entrar</v-btn
     >
-    <v-btn
+        <v-btn
+        :disabled="isFormValid"
       @click="signInWithGoogle"
       variant="outlined"
-      size="small"
-      class="mt-2"
+      rounded="xl"
+      class="mt-4"
+      prepend-icon="mdi-google"
       >Entre com o Google</v-btn
     >
-    <p>
+    <p class="mt-4">
       Não tem cadastro?
       <router-link class="text-decoration-none" to="/register"
         >Registre-se</router-link
       >
     </p>
+    </v-card-actions>
+    </v-card>    
+    </v-form>
   
 </template>
 
