@@ -6,7 +6,7 @@ import { useRoute } from "vue-router";
 
 const route = useRoute();
 onMounted(() => {
-  comidasStore.pegarComidas(route.params.id);
+  comidasStore.pegarComidas(route.params.restId);
 });
 </script>
 <template>
