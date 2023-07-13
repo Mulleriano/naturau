@@ -22,6 +22,12 @@ const route = useRoute();
             @click="this.$router.push('/comidas')"
           >
             <v-icon> mdi-food-drumstick </v-icon>
+
+          <v-btn
+            :active="route.path.includes('pedidos')"
+            @click="this.$router.replace('/pedidos')"
+          >
+            <v-icon> mdi-list-box </v-icon>
           </v-btn>
         </v-bottom-navigation>
       </v-card>

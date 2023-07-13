@@ -8,6 +8,7 @@ import { registerPlugins } from "@/plugins";
 import router from "./router";
 
 import "@/modules/auth";
+import "@/modules/pedidos";
 
 const app = createApp(App);
 
