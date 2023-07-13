@@ -14,7 +14,7 @@ export async function listaRestaurantes() {
 
 export async function listaComidas(restId) {
   let itensLocal = [];
-  if (restId == "lista") {
+  if (!restId) {
     const restaurantes = await getDocs(collectionGroup(db, "comidas"));
 
     restaurantes.forEach((doc) => {
