@@ -48,7 +48,7 @@ const signInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
     .then((result) => {
-      router.push("/");
+      router.push("/hello");
     })
     .catch((error) => {
       alert("Algo deu errado");
