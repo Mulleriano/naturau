@@ -11,15 +11,15 @@ export const pedidosStore = reactive({
   },
   async filtrarPedidos(id) {
     await this.pegarPedidos();
-    this.pedidos.concluidos.map((a) => {
-      if (a.id == id) this.pedido = a;
+    this.pedidos.concluidos.map((pedido) => {
+      if (pedido.id == id) this.pedido = pedido;
     });
-    this.pedidos.emAndamento.map((a) => {
-      if (a.id == id) this.pedido = a;
+    this.pedidos.emAndamento.map((pedido) => {
+      if (pedido.id == id) this.pedido = pedido;
     });
     this.loadingDetalhes = false;
   },
-  async atualizarStatus(pedidoId){
-    await finalizar(pedidoId)
-  }
+  async atualizarStatus(pedidoId) {
+    await finalizar(pedidoId);
+  },
 });
