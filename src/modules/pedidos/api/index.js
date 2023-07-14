@@ -1,5 +1,12 @@
 import { db } from "@/firebase.config";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 
 export async function listaPedidos() {
   const emAndamento = query(
@@ -29,4 +36,11 @@ export async function listaPedidos() {
     itensLocal.concluidos.push({ ...doc.data(), id: doc.id });
   });
   return itensLocal;
+}
+
+export async function finalizar(pedidoId) {
+  const res = await updateDoc(doc(db, "pedidos", pedidoId), {
+    status: "concluido",
+  });
+  console.log(res);
 }
