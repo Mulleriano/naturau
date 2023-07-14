@@ -21,25 +21,27 @@ export async function restDados(restId) {
   const restaurantes = await getDoc(doc(db, "restaurantes", restId));
 
   restData = restaurantes.data();
-
   return restData;
 }
 
 export async function listaComidas(restId) {
   let itensLocal = [];
   if (!restId) {
-    const restaurantes = await getDocs(collectionGroup(db, "comidas"));
-
-    restaurantes.forEach((doc) => {
-      itensLocal.push({ ...doc.data(), id: doc.id });
+    const comidas = await getDocs(collectionGroup(db, "comidas"));
+    comidas.forEach((doc) => {
+      itensLocal.push({
+        ...doc.data(),
+        id: doc.id,
+        restId: doc.ref.parent.parent.id,
+      });
     });
   } else {
-    const restaurante = await getDocs(
+    const comidas = await getDocs(
       collection(db, "restaurantes", restId, "comidas")
     );
 
-    restaurante.forEach((doc) => {
-      itensLocal.push({ ...doc.data(), id: doc.id });
+    comidas.forEach((doc) => {
+      itensLocal.push({ ...doc.data(), id: doc.id, restId: restId });
     });
   }
 
