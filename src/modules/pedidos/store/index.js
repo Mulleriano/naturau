@@ -1,5 +1,5 @@
 import { reactive } from "vue";
-import { listaPedidos } from "../api";
+import { finalizar, listaPedidos } from "../api";
 
 export const pedidosStore = reactive({
   pedidos: [],
@@ -19,4 +19,7 @@ export const pedidosStore = reactive({
     });
     this.loadingDetalhes = false;
   },
+  async atualizarStatus(pedidoId){
+    await finalizar(pedidoId)
+  }
 });
