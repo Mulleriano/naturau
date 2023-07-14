@@ -1,12 +1,18 @@
 <script setup>
 import { onMounted } from "vue";
 import { comidasStore } from "../store";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { restStore } from "../store";
 
 const route = useRoute();
+const router = useRouter();
 const restId = route.params.restId;
 const comidaId = route.params.comidaId;
+
+async function pedir() {
+  await comidasStore.adicionarPedido(restStore.restaurante);
+  router.push("/pedidos");
+}
 
 onMounted(async () => {
   await restStore.pegarDadosRest(restId);
@@ -18,7 +24,7 @@ onMounted(async () => {
     <v-app-bar-nav-icon @click="this.$router.go(-1)"
       ><v-icon>mdi-arrow-left</v-icon></v-app-bar-nav-icon
     >
-    <v-app-bar-title> {{ comidasStore.comida.titulo }} </v-app-bar-title>
+    <v-app-bar-title> {{ comidasStore.comida?.titulo }} </v-app-bar-title>
   </v-app-bar>
 
   <v-card position="fixed" location="top" width="100%">
@@ -51,7 +57,7 @@ onMounted(async () => {
           readonly
         >
         </v-rating>
-        <p color="#fe8b05">R$ {{ comidasStore.comida.preco?.toFixed(2) }}</p>
+        <p color="#fe8b05">R$ {{ comidasStore.comida.preco }},00</p>
       </div>
     </v-card>
 
@@ -63,13 +69,13 @@ onMounted(async () => {
       color="transparent"
     >
       <v-btn
-        @click="adicionarPedido(restId, comida)"
+        @click="pedir"
         color="#fe8b05"
         block
         rounded
         class="pa-7 elevation-10 text-white"
       >
-        Pedir R${{ comidasStore.comida.preco?.toFixed(2) }}
+        Pedir R${{ comidasStore.comida.preco }},00
       </v-btn>
     </v-sheet>
   </div>
