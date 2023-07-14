@@ -14,16 +14,6 @@ let status = reactive({
 });
 
 function handleStatus() {
-  if (pedidosStore.pedido.status == "concluido") {
-    status = {
-      pagamento: true,
-      preparo: true,
-      saiu: true,
-      entregue: true,
-    };
-    return;
-  }
-
   setTimeout(() => {
     status.pagamento = true;
   }, 1000);
@@ -57,7 +47,7 @@ onMounted(() => {
         width: 150%;
         transform: rotate(90deg);
       "
-      v-if="!entregue"
+      v-if="!status.entregue"
       indeterminate
     ></v-progress-linear>
     <v-timeline line-color="#fe8b05" side="end">
