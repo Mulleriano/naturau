@@ -1,15 +1,29 @@
 <script setup>
 import { onMounted, reactive } from "vue";
+import { useRoute } from "vue-router";
+import { pedidosStore } from "../store";
 
-const status = reactive({
+const route = useRoute();
+const pedidoId = route.params.id;
+
+let status = reactive({
   pagamento: false,
   preparo: false,
   saiu: false,
   entregue: false,
-  done: false,
 });
 
 function handleStatus() {
+  if (pedidosStore.pedido.status == "concluido") {
+    status = {
+      pagamento: true,
+      preparo: true,
+      saiu: true,
+      entregue: true,
+    };
+    return;
+  }
+
   setTimeout(() => {
     status.pagamento = true;
   }, 1000);
@@ -24,7 +38,7 @@ function handleStatus() {
 
   setTimeout(() => {
     status.entregue = true;
-    status.done = true;
+    pedidosStore.atualizarStatus(pedidoId);
   }, 4000);
 }
 
@@ -43,7 +57,7 @@ onMounted(() => {
         width: 150%;
         transform: rotate(90deg);
       "
-      v-if="!status.done"
+      v-if="!entregue"
       indeterminate
     ></v-progress-linear>
     <v-timeline line-color="#fe8b05" side="end">
