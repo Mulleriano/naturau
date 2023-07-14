@@ -2,6 +2,7 @@ import { db } from "@/firebase.config";
 import {
   collection,
   doc,
+  getDoc,
   getDocs,
   query,
   updateDoc,
@@ -9,38 +10,27 @@ import {
 } from "firebase/firestore";
 
 export async function listaPedidos() {
-  const emAndamento = query(
-    collection(db, "pedidos"),
-    where("status", "==", "em andamento")
-  );
+  let pedidos = [];
 
-  const concluidos = query(
-    collection(db, "pedidos"),
-    where("status", "==", "concluido")
-  );
+  const queryPedidos = await getDocs(query(collection(db, "pedidos")));
 
-  let itensLocal = {
-    concluidos: [],
-    emAndamento: [],
-  };
-
-  const queryEmAndamento = await getDocs(emAndamento);
-
-  const queryConcluidos = await getDocs(concluidos);
-
-  queryEmAndamento.forEach((doc) => {
-    itensLocal.emAndamento.push({ ...doc.data(), id: doc.id });
+  queryPedidos.forEach((doc) => {
+    pedidos.push({ ...doc.data(), id: doc.id });
   });
+  return pedidos;
+}
 
-  queryConcluidos.forEach((doc) => {
-    itensLocal.concluidos.push({ ...doc.data(), id: doc.id });
-  });
-  return itensLocal;
+export async function pedidoData(pedidoId) {
+  let pedidoData = {};
+  const pedido = await getDoc(doc(db, "pedidos", pedidoId));
+
+  pedidoData = pedido.data();
+
+  return pedidoData;
 }
 
 export async function finalizar(pedidoId) {
   const res = await updateDoc(doc(db, "pedidos", pedidoId), {
     status: "concluido",
   });
-  console.log(res);
 }
