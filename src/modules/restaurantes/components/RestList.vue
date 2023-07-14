@@ -19,11 +19,9 @@ import { restStore } from "../store";
       ></v-img>
     </div>
     <div class="w-50 pa-4">
-      <router-link
-        class="text-sm-h4"
-        :to="`/naturau/comidas/${restaurante.id}`"
-        >{{ restaurante.nome }}</router-link
-      >
+      <router-link class="text-sm-h4" :to="`/comidas/${restaurante.id}`">{{
+        restaurante.nome
+      }}</router-link>
 
       <p>
         <v-icon>mdi-map-marker</v-icon>

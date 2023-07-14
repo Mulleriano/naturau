@@ -28,6 +28,7 @@ function handleStatus() {
   }, 4000);
 }
 
+
 function statusClass(value) {
   return value ? "text-green-darken-4" : "text-grey";
 }
