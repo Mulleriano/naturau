@@ -1,5 +1,18 @@
 <script setup>
-//
+import { ref } from "vue";
+import {petStore} from "../store"
+import { reactive } from "vue";
+
+const petName = ref("");
+const adress = ref("");
+
+
+const payload = reactive({ 
+  petName: petName,
+    adress: adress,  
+})
+
+
 </script>
 
 <template>
@@ -17,7 +30,7 @@
       variant="outlined"
       rounded="pill"
       color="#2a6141"
-      v-model="text"
+      v-model="petName"
       label="Nome do pet"
       clearable
       hide-details="auto"
@@ -30,7 +43,7 @@
       variant="outlined"
       rounded="pill"
       color="#053026"
-      v-model="text"
+      v-model="adress"
       label="Endereço do pet"
       clearable
       hide-details="auto"
@@ -40,7 +53,7 @@
   </v-card>
   <v-btn
     size="large"
-    @click="this.$router.push('/pet-detail')"
+    @click=" (petStore.proximo(payload)), (this.$router.push('/pet-detail'))"
     rounded="xl"
     color="#053026"
     location="bottom"
