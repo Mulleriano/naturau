@@ -14,7 +14,7 @@ let data = ref("");
 
 onMounted(async () => {
   pedidosStore.loadingDetalhes = true;
-  await pedidosStore.filtrarPedidos(id);
+  await pedidosStore.pegarPedido(id);
   data.value = await converter();
 });
 
