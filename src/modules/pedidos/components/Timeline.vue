@@ -28,6 +28,10 @@ function handleStatus() {
   }, 4000);
 }
 
+function statusClass(value) {
+  return value ? "text-green-darken-4" : "text-grey";
+}
+
 onMounted(() => {
   handleStatus();
 });
@@ -47,45 +51,23 @@ onMounted(() => {
       indeterminate
     ></v-progress-linear>
     <v-timeline line-color="#fe8b05" side="end">
-      <v-timeline-item
-        :dot-color="status.pagamento ? 'green-darken-4' : 'grey'"
-      >
-        <span
-          :class="[
-            'font-weight-bold',
-            status.pagamento ? 'text-green-darken-4' : 'text-grey',
-          ]"
-        >
+      <v-timeline-item :dot-color="statusClass(status.pagamento)">
+        <span :class="['font-weight-bold', statusClass(status.pagamento)]">
           Pagamento recebido
         </span>
       </v-timeline-item>
-      <v-timeline-item :dot-color="status.preparo ? 'green-darken-4' : 'grey'">
-        <span
-          :class="[
-            'font-weight-bold',
-            status.preparo ? 'text-green-darken-4' : 'text-grey',
-          ]"
-        >
+      <v-timeline-item :dot-color="statusClass(status.preparo)">
+        <span :class="['font-weight-bold', statusClass(status.preparo)]">
           Pedido sendo feito
         </span>
       </v-timeline-item>
-      <v-timeline-item :dot-color="status.saiu ? 'green-darken-4' : 'grey'">
-        <span
-          :class="[
-            'font-weight-bold',
-            status.saiu ? 'text-green-darken-4' : 'text-grey',
-          ]"
-        >
+      <v-timeline-item :dot-color="statusClass(status.saiu)">
+        <span :class="['font-weight-bold', statusClass(status.saiu)]">
           Saiu para entrega
         </span>
       </v-timeline-item>
-      <v-timeline-item :dot-color="status.entregue ? 'green-darken-4' : 'grey'">
-        <span
-          :class="[
-            'font-weight-bold',
-            status.entregue ? 'text-green-darken-4' : 'text-grey',
-          ]"
-        >
+      <v-timeline-item :dot-color="statusClass(status.entregue)">
+        <span :class="['font-weight-bold', statusClass(status.entregue)]">
           Pedido entregue
         </span>
       </v-timeline-item>
