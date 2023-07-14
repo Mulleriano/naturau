@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { comidasStore } from "../store";
 import { useRoute, useRouter } from "vue-router";
 import { restStore } from "../store";
@@ -8,9 +8,12 @@ const route = useRoute();
 const router = useRouter();
 const restId = route.params.restId;
 const comidaId = route.params.comidaId;
+let loadingBtn = ref(false);
 
 async function pedir() {
+  loadingBtn.value = true;
   await comidasStore.adicionarPedido(restStore.restaurante);
+  loadingBtn.value = false;
   router.push("/pedidos");
 }
 
@@ -20,6 +23,7 @@ onMounted(async () => {
 });
 </script>
 <template>
+  {{ loadingBtn }}
   <v-app-bar>
     <v-app-bar-nav-icon @click="this.$router.go(-1)"
       ><v-icon>mdi-arrow-left</v-icon></v-app-bar-nav-icon
@@ -69,6 +73,7 @@ onMounted(async () => {
       color="transparent"
     >
       <v-btn
+        :loading="loadingBtn"
         @click="pedir"
         color="#fe8b05"
         block
