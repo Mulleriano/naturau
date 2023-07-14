@@ -32,6 +32,10 @@ function statusClass(value) {
   return value ? "text-green-darken-4" : "text-grey";
 }
 
+function dotColor(value) {
+  return value ? "green-darken-4" : "grey";
+}
+
 onMounted(() => {
   handleStatus();
 });
@@ -51,22 +55,22 @@ onMounted(() => {
       indeterminate
     ></v-progress-linear>
     <v-timeline line-color="#fe8b05" side="end">
-      <v-timeline-item :dot-color="statusClass(status.pagamento)">
+      <v-timeline-item :dot-color="dotColor(status.pagamento)">
         <span :class="['font-weight-bold', statusClass(status.pagamento)]">
           Pagamento recebido
         </span>
       </v-timeline-item>
-      <v-timeline-item :dot-color="statusClass(status.preparo)">
+      <v-timeline-item :dot-color="dotColor(status.preparo)">
         <span :class="['font-weight-bold', statusClass(status.preparo)]">
           Pedido sendo feito
         </span>
       </v-timeline-item>
-      <v-timeline-item :dot-color="statusClass(status.saiu)">
+      <v-timeline-item :dot-color="dotColor(status.saiu)">
         <span :class="['font-weight-bold', statusClass(status.saiu)]">
           Saiu para entrega
         </span>
       </v-timeline-item>
-      <v-timeline-item :dot-color="statusClass(status.entregue)">
+      <v-timeline-item :dot-color="dotColor(status.entregue)">
         <span :class="['font-weight-bold', statusClass(status.entregue)]">
           Pedido entregue
         </span>
