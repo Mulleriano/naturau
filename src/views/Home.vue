@@ -13,7 +13,9 @@
 <style>
 
 .bg {
-  background-image: url("public/bg.jpg");
+  background-image: url("public/imgs/home.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 
