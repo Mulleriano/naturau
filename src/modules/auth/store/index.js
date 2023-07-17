@@ -4,6 +4,21 @@ import { doc, setDoc } from "firebase/firestore";
 import { reactive } from "vue";
 import { dadosPet } from "../api";
 
+import { ref as vueRef } from "vue";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+
+const storage = getStorage();
+const uploadedImgUrl = vueRef("");
+const metadata = {
+  size: Number,
+  name: "",
+};
+
 export const petStore = reactive({
   user: {},
   petDados: {},
@@ -37,5 +52,40 @@ export const petStore = reactive({
   },
   pegarPet(uid) {
     console.log(uid);
+  },
+});
+
+export const imgStore = reactive({
+  img: () => {
+    onAuthStateChanged(getAuth(), (user) => {
+      const email = user.email;
+      const file = document.getElementById("image").files[0];
+      const storageRef = ref(storage, email);
+      const uploadTask = uploadBytesResumable(storageRef, file, metadata);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused");
+              break;
+            case "running":
+              console.log("Upload is running");
+              break;
+          }
+        },
+        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+          uploadedImgUrl.value = url;
+          console.log(url);
+          const uid = user.uid;
+          console.log(uid);
+          const usuarios = doc(db, "usuarios", uid);
+          setDoc(usuarios, { profilePicture: url }, { merge: true });
+        })
+      );
+    });
   },
 });
