@@ -7,8 +7,6 @@
 <style>
 a {
   text-decoration: none;
-  color: #2a6141;
+  color: #fe8b05;
 }
-
-
 </style>
