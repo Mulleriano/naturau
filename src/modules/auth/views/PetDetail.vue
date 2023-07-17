@@ -14,7 +14,6 @@ onMounted(async () => {
   await petStore.pegarUser();
 });
 
-
 const payload = reactive({
   tipo: "",
   sexo: "",
@@ -61,7 +60,7 @@ function handleDetail(toggle, escolha) {
     >
       <h2 class="mb-4 text-teal-darken-3">
         Nosso papo agora <br />
-        é com
+        é com você {{ petStore.petDados?.petName }}
       </h2>
       <v-item-group mandatory>
         <p class="text-body-1">Qual tipo de pet você é?</p>
@@ -147,7 +146,7 @@ function handleDetail(toggle, escolha) {
     </v-card>
     <v-btn
       size="large"
-      @click="(petStore.fim(payload)), (this.$router.push('/pet-foto')), (arrayRestricao(restricao))"
+      @click="(arrayRestricao(restricao)), (petStore.fim(payload)), (this.$router.push('/pet-foto'))"
       rounded="xl"
       color="#8ad7c0"
       location="bottom"
