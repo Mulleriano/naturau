@@ -29,6 +29,12 @@ const route = useRoute();
           >
             <v-icon> mdi-list-box </v-icon>
           </v-btn>
+          <v-btn
+            :active="route.path.includes('perfil')"
+            @click="this.$router.replace('/perfil')"
+          >
+            <v-icon> mdi-paw </v-icon>
+          </v-btn>
         </v-bottom-navigation>
       </v-card>
     </v-main>
