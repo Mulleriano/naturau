@@ -12,9 +12,14 @@ let loadingBtn = ref(false);
 
 async function pedir() {
   loadingBtn.value = true;
-  await comidasStore.adicionarPedido(restStore.restaurante);
-  loadingBtn.value = false;
-  router.push("/pedidos");
+  try {
+    await comidasStore.adicionarPedido(restStore.restaurante);
+  } catch {
+    alert("Tivemos um problema, tente novamente");
+  } finally {
+    loadingBtn.value = false;
+    router.push("/pedidos");
+  }
 }
 
 onMounted(async () => {
