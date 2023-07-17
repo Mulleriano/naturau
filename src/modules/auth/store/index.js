@@ -8,7 +8,6 @@ import { reactive } from "vue";
  proximo: (payload) => {
     onAuthStateChanged(getAuth(), (user) => {
        const uid = user.uid
-     console.log(uid)
      const usuario = setDoc(doc(db, "usuarios", uid),{
       payload
      }).catch((error)  => {
@@ -19,7 +18,6 @@ import { reactive } from "vue";
   fim: (payload) => {
     onAuthStateChanged(getAuth(), (user) => {
       const uid = user.uid
-    console.log(uid)
     const usuarios = doc(db, "usuarios", uid);
     setDoc(usuarios,  { payload} , { merge: true })})},
   
