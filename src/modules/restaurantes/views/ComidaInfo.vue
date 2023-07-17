@@ -14,11 +14,12 @@ async function pedir() {
   loadingBtn.value = true;
   try {
     await comidasStore.adicionarPedido(restStore.restaurante);
-  } catch {
+    router.push("/pedidos");
+  } catch (err) {
+    console.log(err);
     alert("Tivemos um problema, tente novamente");
   } finally {
     loadingBtn.value = false;
-    router.push("/pedidos");
   }
 }
 
@@ -28,7 +29,6 @@ onMounted(async () => {
 });
 </script>
 <template>
-  {{ loadingBtn }}
   <v-app-bar>
     <v-app-bar-nav-icon @click="this.$router.go(-1)"
       ><v-icon>mdi-arrow-left</v-icon></v-app-bar-nav-icon
