@@ -4,32 +4,36 @@ import { restStore } from "../store";
 
 <template>
   <v-card
-    class="d-flex justify-space-between my-4 pa-8"
-    location="top"
-    color="grey"
+    height="150px"
+    width="100%"
+    color="#fafafa"
     v-for="restaurante in restStore.restaurantes"
     :key="restaurante.id"
+    class="pb-4 elevation-10 d-flex justify-space-between pa-3 my-3"
   >
-    <div class="w-25">
-      <v-img
-        height="100%"
-        aspect-ratio="1/1"
-        cover
-        :src="restaurante.img"
-      ></v-img>
-    </div>
-    <div class="w-50 pa-4">
-      <router-link class="text-sm-h4" :to="`/comidas/${restaurante.id}`">{{
-        restaurante.nome
-      }}</router-link>
+    <v-img
+      min-width="25%"
+      max-width="25%"
+      aspect-ratio="1/1"
+      cover
+      :src="restaurante.img"
+    ></v-img>
 
-      <p>
+    <div class="w-50 text-left">
+      <router-link :to="`/comidas/${restaurante.id}`">
+        <v-card-title>
+          {{ restaurante.nome }}
+        </v-card-title>
+      </router-link>
+
+      <v-card-subtitle>
         <v-icon>mdi-map-marker</v-icon>
         Distância: {{ restaurante.distancia }}
-      </p>
+      </v-card-subtitle>
     </div>
-    <div class="my-4 w-25">
+    <div class="w-25 text-end pt-2">
       <v-rating
+        size="20"
         v-model="restaurante.avaliacoes"
         half-increments
         readonly
