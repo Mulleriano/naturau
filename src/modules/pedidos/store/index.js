@@ -1,5 +1,5 @@
 import { reactive } from "vue";
-import { listaPedidos } from "../api";
+import { finalizar, listaPedidos, pedidoData } from "../api";
 
 export const pedidosStore = reactive({
   pedidos: [],
@@ -9,14 +9,12 @@ export const pedidosStore = reactive({
     const res = await listaPedidos();
     this.pedidos = res;
   },
-  async filtrarPedidos(id) {
-    await this.pegarPedidos();
-    this.pedidos.concluidos.map((a) => {
-      if (a.id == id) this.pedido = a;
-    });
-    this.pedidos.emAndamento.map((a) => {
-      if (a.id == id) this.pedido = a;
-    });
+  async pegarPedido(id) {
+    const res = await pedidoData(id);
+    this.pedido = res;
     this.loadingDetalhes = false;
+  },
+  async atualizarStatus(pedidoId) {
+    await finalizar(pedidoId);
   },
 });
