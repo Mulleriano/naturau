@@ -2,16 +2,20 @@
 import { ref } from "vue";
 import {petStore} from "../store"
 import { reactive } from "vue";
+import {onMounted} from 'vue';
 
 const petName = ref("");
-const adress = ref("");
+const address = ref("");
 
 
 const payload = reactive({ 
   petName: petName,
-    adress: adress,  
+    address: address,  
 })
 
+onMounted(async () => {
+  await petStore.pegarUser();
+});
 
 </script>
 
@@ -43,7 +47,7 @@ const payload = reactive({
       variant="outlined"
       rounded="pill"
       color="#053026"
-      v-model="adress"
+      v-model="address"
       label="Endereço do pet"
       clearable
       hide-details="auto"
@@ -61,4 +65,5 @@ const payload = reactive({
     class="mb-16 text-white w-50"
     >Próximo</v-btn
   >
+ 
 </template>
