@@ -18,28 +18,9 @@ function arrayRestricao(restricao){
   console.log(semVirgula)
 }
 
-function handleDetail(toggle, escolha){
+function handleDetail(toggle, name, value){
   toggle();
-  switch(escolha){
-    case "gato":
-    payload.tipo = escolha;
-    break;
-    case "cachorro":
-    payload.tipo = escolha;
-    break;
-    case "femea":
-    payload.sexo = escolha;
-    break;
-    case "macho":
-    payload.sexo = escolha;
-    break;
-    case "sim":
-    payload.sn = escolha;
-    break;
-    case "nao":
-    payload.sn = escolha;
-    break;
-  }
+  payload[name] = value
 }
 </script>
 
@@ -59,7 +40,7 @@ function handleDetail(toggle, escolha){
       <div class="d-flex justify-space-around">
         <v-item v-slot="{ isSelected, toggle }">
           <v-btn
-            @click="handleDetail(toggle, 'gato')"
+            @click="handleDetail(toggle, 'tipo', 'gato')"
             :color="isSelected ? '#8dd8c1' : 'white'"
             rounded="xl"
             class="ma-5 pl-10 pr-10"
@@ -68,7 +49,7 @@ function handleDetail(toggle, escolha){
         </v-item>
         <v-item v-slot="{ isSelected, toggle }">
           <v-btn
-            @click="handleDetail(toggle, 'cachorro')"
+            @click="handleDetail(toggle, 'tipo', 'cachorro')"
             :color="isSelected ? '#8dd8c1' : 'white'"
             rounded="xl"
             class="ma-5"
@@ -82,7 +63,7 @@ function handleDetail(toggle, escolha){
       <div class="d-flex justify-space-around mt-2">
         <v-item v-slot="{ isSelected, toggle }">
           <v-btn
-            @click="handleDetail(toggle, 'femea')"
+            @click="handleDetail(toggle, 'sexo', 'femea')"
             :color="isSelected ? '#8dd8c1' : 'white'"
             rounded="xl"
             class="ma-5 pl-8 pr-8"
@@ -91,7 +72,7 @@ function handleDetail(toggle, escolha){
         </v-item>
         <v-item v-slot="{ isSelected, toggle }">
           <v-btn
-            @click="handleDetail(toggle, 'macho')"
+            @click="handleDetail(toggle, 'sexo', 'macho')"
             :color="isSelected ? '#8dd8c1' : 'white'"
             rounded="xl"
             class="ma-5 pl-8 pr-8"
@@ -105,7 +86,7 @@ function handleDetail(toggle, escolha){
       <div class="d-flex justify-space-around mt-2">
         <v-item v-slot="{ isSelected, toggle }">
           <v-btn
-            @click="handleDetail(toggle, 'nao')"
+            @click="handleDetail(toggle, 'sn', 'nao')"
             :color="isSelected ? '#8dd8c1' : 'white'"
             rounded="xl"
             class="ma-5 pl-11 pr-11"
@@ -114,7 +95,7 @@ function handleDetail(toggle, escolha){
         </v-item>
         <v-item v-slot="{ isSelected, toggle }">
           <v-btn
-            @click="handleDetail(toggle, 'sim')"
+            @click="handleDetail(toggle, 'sn', 'sim')"
             :color="isSelected ? '#8dd8c1' : 'white'"
             rounded="xl"
             class="ma-5 pl-12 pr-12"
