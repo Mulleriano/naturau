@@ -28,6 +28,16 @@ export const routes = [
           name: "PetDetail",
           component: () => import ("../views/PetDetail.vue"),
         },
+        {
+          path: "perfil",
+          name: "Perfil",
+          component: () => import ("../views/Perfil.vue"),
+        },
+        {
+          path: "pet-foto",
+          name: "PetFoto",
+          component: () => import ("../views/PetFoto.vue"),
+        },
       ]
     }
 ];
