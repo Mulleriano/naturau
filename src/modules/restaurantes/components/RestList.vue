@@ -21,19 +21,20 @@ import { restStore } from "../store";
 
     <div class="w-50 text-left">
       <router-link :to="`/comidas/${restaurante.id}`">
-        <v-card-title>
+        <v-card-title class="text-grey-darken-3">
           {{ restaurante.nome }}
         </v-card-title>
       </router-link>
 
       <v-card-subtitle>
-        <v-icon>mdi-map-marker</v-icon>
+        <v-icon color="#fe8b05">mdi-map-marker</v-icon>
         Distância: {{ restaurante.distancia }}
       </v-card-subtitle>
     </div>
     <div class="w-25 text-end pt-2">
       <v-rating
         size="20"
+        color="#fe8b05"
         v-model="restaurante.avaliacoes"
         half-increments
         readonly
