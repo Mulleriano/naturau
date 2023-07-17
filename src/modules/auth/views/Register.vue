@@ -57,78 +57,84 @@ const signInWithGoogle = () => {
 </script>
 
 <template>
-  <v-form
-    @submit.prevent
-    v-model="isValid"
-    class="w-100 h-100 d-flex align-center justify-center"
-  >
-    <v-card
-      title="Cadastro"
-      elevation="0"
-      class="w-75 d-flex flex-column align-center"
+  <v-container class="w-100 h-100 bg">
+    <v-form
+      @submit.prevent
+      v-model="isValid"
+      class="w-100 h-100 d-flex align-center justify-center"
     >
-      <v-text-field
-        variant="outlined"
-        v-model="email"
-        label="Email"
-        :rules="[valid]"
-        clearable
-        hide-details="auto"
-        class="w-100 ma-4"
+      <v-card
+        color="transparent"
+        elevation="0"
+        class="w-75 d-flex flex-column align-center"
       >
-      </v-text-field>
-      <v-text-field
-        variant="outlined"
-        v-model="password"
-        :append-inner-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-        :type="show1 ? 'text' : 'password'"
-        @click:append-inner="show1 = !show1"
-        type="password"
-        label="Senha"
-        :rules="[valid]"
-        clearable
-        hide-details="auto"
-        class="w-100 ma-4"
-      >
-      </v-text-field>
-      <v-text-field
-        variant="outlined"
-        v-model="confpass"
-        :append-inner-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-        :type="show1 ? 'text' : 'password'"
-        @click:append-inner="show1 = !show1"
-        :rules="[passwordconf]"
-        type="password"
-        label="Confirme sua senha"
-        clearable
-        hide-details="auto"
-        class="w-100 ma-4"
-      >
-      </v-text-field>
-      <v-btn
-        :disabled="!isValid"
-        @click="cadastro"
-        rounded="xl"
-        color="#2a6141"
-        variant="tonal"
-        class="mt-2"
-        block
-        >Cadastrar</v-btn
-      >
-      <v-btn
-        @click="signInWithGoogle"
-        variant="outlined"
-        rounded="xl"
-        class="mt-4"
-        prepend-icon="mdi-google"
-        >Cadastre com o Google</v-btn
-      >
-      <p class="mt-4">
-        Ja tem uma conta?
-        <router-link class="text-decoration-none" to="/login"
-          >Login</router-link
+        <v-img class="mx-auto" width="80%" src="imgs/logo.png"></v-img>
+        <v-card-title>Cadastro</v-card-title>
+        <v-text-field
+          variant="outlined"
+          v-model="email"
+          label="Email"
+          :rules="[valid]"
+          clearable
+          hide-details="auto"
+          class="w-100 ma-4"
         >
-      </p>
-    </v-card>
-  </v-form>
+        </v-text-field>
+        <v-text-field
+          variant="outlined"
+          v-model="password"
+          :append-inner-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+          :type="show1 ? 'text' : 'password'"
+          @click:append-inner="show1 = !show1"
+          type="password"
+          label="Senha"
+          :rules="[valid]"
+          clearable
+          hide-details="auto"
+          class="w-100 ma-4"
+        >
+        </v-text-field>
+        <v-text-field
+          variant="outlined"
+          v-model="confpass"
+          :append-inner-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+          :type="show1 ? 'text' : 'password'"
+          @click:append-inner="show1 = !show1"
+          :rules="[passwordconf]"
+          type="password"
+          label="Confirme sua senha"
+          clearable
+          hide-details="auto"
+          class="w-100 ma-4"
+        >
+        </v-text-field>
+        <v-card-actions class="d-flex flex-column">
+          <v-btn
+            :disabled="!isValid"
+            @click="cadastro"
+            rounded="xl"
+            color="#2a6141"
+            variant="tonal"
+            class="mt-2"
+            block
+            >Cadastrar</v-btn
+          >
+          <v-btn
+            @click="signInWithGoogle"
+            variant="outlined"
+            rounded="xl"
+            class="mt-4 px-5"
+            prepend-icon="mdi-google"
+            >Cadastre com o Google</v-btn
+          >
+          <p class="mt-4">
+            Ja tem uma conta?
+            <router-link class="text-decoration-none" to="/login"
+              >Login</router-link
+            >
+          </p>
+        </v-card-actions>
+      </v-card>
+    </v-form>
+  </v-container>
 </template>
