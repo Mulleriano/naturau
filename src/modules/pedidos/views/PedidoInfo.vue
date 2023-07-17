@@ -14,7 +14,7 @@ let data = ref("");
 
 onMounted(async () => {
   pedidosStore.loadingDetalhes = true;
-  await pedidosStore.filtrarPedidos(id);
+  await pedidosStore.pegarPedido(id);
   data.value = await converter();
 });
 
@@ -47,7 +47,7 @@ onUnmounted(() => {
         <v-col align="left">{{ data }}</v-col>
         <v-col align="right">
           <span class="text-orange-darken-4"
-            >R$ {{ pedidosStore?.pedido?.total?.toFixed(2) }}</span
+            >R$ {{ pedidosStore.pedido.total }},00</span
           >
         </v-col>
       </v-row>
