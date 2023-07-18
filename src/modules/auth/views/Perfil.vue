@@ -3,7 +3,7 @@ import { onMounted } from "vue";
 import { getAuth, signOut } from "firebase/auth";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
-import { petStore, imgStore } from "../store";
+import { petStore } from "../store";
 
 const router = useRouter();
 
@@ -60,7 +60,7 @@ const reloadPage = () => {
             prepend-icon="mdi-camera"
             ref="file"
             id="image"
-            @change="imgStore.img()"
+            @change="petStore.img()"
             type="file"
             clear-icon="w-100"
           ></v-file-input>
