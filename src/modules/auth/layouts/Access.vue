@@ -3,11 +3,19 @@
 </script>
 
 <template>
- <v-app>
-  <router-view />
- </v-app> 
-
+  <v-app>
+    <router-view />
+  </v-app>
 </template>
 
-<script>
-</script>
+<style>
+.bg {
+  background-image: url("/imgs/bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.bg-onda {
+  background-image: url("/imgs/bg-onda.png");
+  background-size: contain;
+}
+</style>
