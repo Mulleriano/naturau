@@ -3,9 +3,9 @@ import { petStore } from "../store";
 import { reactive } from "vue";
 import { ref } from "vue";
 import { onMounted } from "vue";
-import { useRoute } from "vue-router";
+import { useRouter } from "vue-router";
 
-const router = useRoute();
+const router = useRouter();
 
 const restricao = ref("");
 const user = ref("");
@@ -13,7 +13,6 @@ const user = ref("");
 onMounted(async () => {
   await petStore.pegarUser();
 });
-import { useRouter } from "vue-router";
 
 const payload = reactive({
   tipo: "",
@@ -143,4 +142,3 @@ function handleDetail(toggle, name, value) {
     >Próximo</v-btn
   >
 </template>
-
