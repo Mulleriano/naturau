@@ -3,6 +3,7 @@ import { listaRestaurantes, restDados, listaComidas } from "../api";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/firebase.config";
 import { pedidosStore } from "@/modules/pedidos/store";
+import { adicionar } from "@/modules/pedidos/api";
 
 export const restStore = reactive({
   restaurantes: [],
@@ -30,18 +31,18 @@ export const comidasStore = reactive({
       if (comidaId == comida.id) this.comida = comida;
     });
   },
-  async adicionarPedido() {
-    await pedidosStore.pegarPedidos();
+  async adicionarPedido(uid) {
+    await pedidosStore.pegarPedidos(uid);
     let numeroPedidos = pedidosStore.pedidos.length;
     const horario = new Date();
     const pedido = {
+      uid: uid,
       comidaId: this.comida.id,
       inicio: horario,
       status: "em andamento",
       titulo: `Pedido #${numeroPedidos == 0 ? 1 : numeroPedidos + 1}`,
       total: this.comida.preco,
     };
-    const res = await addDoc(collection(db, "pedidos"), pedido);
-    return res;
+    await adicionar(pedido);
   },
 });
