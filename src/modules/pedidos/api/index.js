@@ -1,5 +1,6 @@
 import { db } from "@/firebase.config";
 import {
+  addDoc,
   collection,
   doc,
   getDoc,
@@ -35,4 +36,9 @@ export async function finalizar(pedidoId) {
   const res = await updateDoc(doc(db, "pedidos", pedidoId), {
     status: "concluido",
   });
+}
+
+export async function adicionar(pedido) {
+  const res = await addDoc(collection(db, "pedidos"), pedido);
+  return res;
 }
