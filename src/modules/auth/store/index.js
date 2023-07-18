@@ -50,9 +50,6 @@ export const petStore = reactive({
       { merge: true }
     );
   },
-  pegarPet(uid) {
-    console.log(uid);
-  },
 });
 
 export const imgStore = reactive({
