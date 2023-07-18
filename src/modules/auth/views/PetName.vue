@@ -13,6 +13,20 @@ const payload = reactive({
     address: address,  
 })
 
+const nameRules = (value) => {
+  if (!value) {
+    return "Insira o nome do pet";
+  }
+  return true;
+};
+
+const addressRules = (value) => {
+  if (!value) {
+    return "Insira seu endereço";
+  }
+  return true;
+};
+
 onMounted(async () => {
   await petStore.pegarUser();
 });
@@ -20,7 +34,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <v-card
+    <v-card
     position="relative"
     location="center"
     elevation="0"
@@ -35,6 +49,7 @@ onMounted(async () => {
       rounded="pill"
       color="#2a6141"
       v-model="petName"
+      :rules="[nameRules]"
       label="Nome do pet"
       clearable
       hide-details="auto"
@@ -48,6 +63,7 @@ onMounted(async () => {
       rounded="pill"
       color="#053026"
       v-model="address"
+      :rules="[addressRules]"
       label="Endereço do pet"
       clearable
       hide-details="auto"
@@ -57,6 +73,7 @@ onMounted(async () => {
   </v-card>
   <v-btn
     size="large"
+    :disabled="!petName || !address"
     @click=" (petStore.proximo(payload)), (this.$router.push('/pet-detail'))"
     rounded="xl"
     color="#053026"
@@ -64,6 +81,5 @@ onMounted(async () => {
     position="fixed"
     class="mb-16 text-white w-50"
     >Próximo</v-btn
-  >
- 
+  > 
 </template>
