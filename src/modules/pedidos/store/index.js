@@ -5,8 +5,8 @@ export const pedidosStore = reactive({
   pedidos: [],
   pedido: {},
   loadingDetalhes: true,
-  async pegarPedidos() {
-    const res = await listaPedidos();
+  async pegarPedidos(uid) {
+    const res = await listaPedidos(uid);
     this.pedidos = res;
   },
   async pegarPedido(id) {
