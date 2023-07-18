@@ -8,7 +8,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <v-container class="w-100 h-100 bg">
+  <v-container class="w-100 h-100 bg-onda">
     <v-card
       position="relative"
       location="center"
@@ -42,11 +42,3 @@ onMounted(async () => {
     >
   </v-container>
 </template>
-
-<style>
-.bg {
-  background-image: url("public/imgs/bg-onda.png");
-  background-size: 100%;
-  background-position: top;
-}
-</style>
