@@ -14,13 +14,17 @@ const password = ref("");
 const errMsg = ref();
 const router = useRouter();
 const show1 = ref(false);
+let loadingGoogle = ref(false);
+let loadingBtn = ref(false);
 
 //metodos
 const login = () => {
+  loadingBtn.value = true;
   //precisa de .value por conta do ref()
   signInWithEmailAndPassword(getAuth(), email.value, password.value)
     //retorna uma promise
     .then((data) => {
+      loadingBtn.value = false;
       alert("Login realizado com sucesso!");
       router.push("/naturau");
     })
@@ -41,9 +45,11 @@ const login = () => {
 };
 
 const signInWithGoogle = () => {
+  loadingGoogle.value = true;
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
     .then(async (result) => {
+    loadingGoogle = false;
       const res = await dadosPet(result.user.uid);
       if (res) {
         router.push("/naturau");
@@ -91,6 +97,7 @@ const signInWithGoogle = () => {
         <p v-if="errMsg">{{ errMsg }}</p>
         <v-card-actions class="d-flex flex-column">
           <v-btn
+            :loading="loadingBtn"
             @click="login"
             :disabled="!email || !password"
             rounded="xl"
@@ -101,6 +108,7 @@ const signInWithGoogle = () => {
             >Entrar</v-btn
           >
           <v-btn
+            :loading="loadingGoogle"
             @click="signInWithGoogle"
             variant="outlined"
             rounded="xl"

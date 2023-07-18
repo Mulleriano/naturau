@@ -14,13 +14,17 @@ const confpass = ref("");
 const router = useRouter();
 const show1 = ref(false);
 const isValid = ref(true);
+let loadingGoogle = ref(false);
+let loadingBtn = ref(false);
 
 //metodos
 const cadastro = () => {
+  loadingBtn.value = true;
   //precisa de .value por conta do ref()
   createUserWithEmailAndPassword(getAuth(), email.value, password.value)
     //retorna uma promise
     .then((data) => {
+      loadingBtn.value = false;
       alert("Registrado com sucesso");
       router.push("/hello");
     })
@@ -45,9 +49,11 @@ const valid = (value) => {
 };
 
 const signInWithGoogle = () => {
+  loadingGoogle.value = true;
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
     .then((result) => {
+      loadingGoogle.value = false;
       router.push("/hello");
     })
     .catch((error) => {
@@ -110,6 +116,7 @@ const signInWithGoogle = () => {
         </v-text-field>
         <v-card-actions class="d-flex flex-column">
           <v-btn
+            :loading="loadingBtn"
             :disabled="!isValid"
             @click="cadastro"
             rounded="xl"
@@ -120,6 +127,7 @@ const signInWithGoogle = () => {
             >Cadastrar</v-btn
           >
           <v-btn
+            :loading="loadingGoogle"
             @click="signInWithGoogle"
             variant="outlined"
             rounded="xl"
