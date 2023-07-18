@@ -38,7 +38,7 @@ onUnmounted(() => {
   </v-sheet>
 
   <v-container v-show="!pedidosStore.loadingDetalhes">
-    <v-card class="px-6 pb-6">
+    <v-card class="pa-6">
       <v-row>
         <v-col align="left" class="text-grey-darken-2">Feito em</v-col>
         <v-col align="right" class="text-grey-darken-2">Total</v-col>
