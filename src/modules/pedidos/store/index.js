@@ -4,8 +4,8 @@ import { finalizar, listaPedidos, pedidoData } from "../api";
 export const pedidosStore = reactive({
   pedidos: [],
   pedido: {},
-  async pegarPedidos() {
-    const res = await listaPedidos();
+  async pegarPedidos(uid) {
+    const res = await listaPedidos(uid);
     this.pedidos = res;
   },
   async pegarPedido(id) {
