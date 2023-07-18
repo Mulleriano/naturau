@@ -18,7 +18,7 @@ function corIcone(path) {
     <v-system-bar></v-system-bar>
     <v-main>
       <router-view />
-      <v-footer>
+      <v-card>
         <v-bottom-navigation rounded="xl" elevation="10" class="mb-4" grow>
           <v-btn
             :active="route.path == '/naturau' ? true : false"
@@ -39,7 +39,7 @@ function corIcone(path) {
             <v-icon :color="corIcone('/pedidos')"> mdi-list-box </v-icon>
           </v-btn>
         </v-bottom-navigation>
-      </v-footer>
+      </v-card>
     </v-main>
   </v-app>
 </template>

@@ -52,67 +52,65 @@ const signInWithGoogle = () => {
 </script>
 
 <template>
-  <v-form class="w-100 h-100 d-flex align-center justify-center">
-    <v-card
-      title="Login"
-      elevation="0"
-      class="w-75 d-flex flex-column align-center"
-    >
-      <v-text-field
-        variant="outlined"
-        v-model="email"
-        label="Email"
-        clearable
-        hide-details="auto"
-        class="w-100 ma-4"
+  <v-container class="w-100 h-100 bg">
+    <v-form class="w-100 h-100 d-flex align-center justify-center">
+      <v-card
+        color="transparent"
+        elevation="0"
+        class="w-75 d-flex flex-column align-center"
       >
-      </v-text-field>
-      <v-text-field
-        variant="outlined"
-        :append-inner-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-        :type="show1 ? 'text' : 'password'"
-        @click:append-inner="show1 = !show1"
-        v-model="password"
-        type="password"
-        label="Senha"
-        clearable
-        hide-details="auto"
-        class="w-100 ma-4"
-      >
-      </v-text-field>
-      <p v-if="errMsg">{{ errMsg }}</p>
-      <v-card-actions class="d-flex flex-column">
-        <v-btn
-          @click="login"
-          :disabled="!email || !password"
-          rounded="xl"
-          color="#2a6141"
-          variant="tonal"
-          class="mt-2"
-          block
-          >Entrar</v-btn
-        >
-        <v-btn
-          @click="signInWithGoogle"
+        <v-img class="mx-auto" width="80%" src="/imgs/logo.png"></v-img>
+        <v-card-title>Login</v-card-title>
+        <v-text-field
           variant="outlined"
-          rounded="xl"
-          class="mt-4"
-          prepend-icon="mdi-google"
-          >Entre com o Google</v-btn
+          v-model="email"
+          label="Email"
+          clearable
+          hide-details="auto"
+          class="w-100 ma-4"
         >
-        <p class="mt-4">
-          Não tem cadastro?
-          <router-link class="text-decoration-none" to="/register"
-            >Registre-se</router-link
+        </v-text-field>
+        <v-text-field
+          variant="outlined"
+          :append-inner-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+          :type="show1 ? 'text' : 'password'"
+          @click:append-inner="show1 = !show1"
+          v-model="password"
+          type="password"
+          label="Senha"
+          clearable
+          hide-details="auto"
+          class="w-100 ma-4"
+        >
+        </v-text-field>
+        <p v-if="errMsg">{{ errMsg }}</p>
+        <v-card-actions class="d-flex flex-column">
+          <v-btn
+            @click="login"
+            :disabled="!email || !password"
+            rounded="xl"
+            color="#2a6141"
+            variant="tonal"
+            class="mt-2"
+            block
+            >Entrar</v-btn
           >
-        </p>
-      </v-card-actions>
-    </v-card>
-  </v-form>
+          <v-btn
+            @click="signInWithGoogle"
+            variant="outlined"
+            rounded="xl"
+            class="mt-4 px-5"
+            prepend-icon="mdi-google"
+            >Entre com o Google</v-btn
+          >
+          <p class="mt-4">
+            Não tem cadastro?
+            <router-link class="text-decoration-none" to="/register"
+              >Registre-se</router-link
+            >
+          </p>
+        </v-card-actions>
+      </v-card>
+    </v-form>
+  </v-container>
 </template>
-
-<style>
-body {
-  background-image: url("public/bg.jpg");
-}
-</style>
