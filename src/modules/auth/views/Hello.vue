@@ -18,7 +18,7 @@ function irPara(rota) {
         do seu melhor amigo?
       </p>
     </div>
-    <v-img src="/imgs/acesso-1.png"></v-img>
+    <v-img src="/public/imgs/acesso-1.png"></v-img>
   </v-container>
   <v-btn
     density="compact"
