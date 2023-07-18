@@ -21,6 +21,10 @@ function handleSignOut() {
   });
 }
 
+function voltar() {
+  router.go(-1);
+}
+
 const reloadPage = () => {
   location.reload();
 };
@@ -28,7 +32,7 @@ const reloadPage = () => {
 
 <template>
   <v-app-bar>
-    <v-app-bar-nav-icon @click="this.$router.go(-1)"
+    <v-app-bar-nav-icon @click="voltar"
       ><v-icon>mdi-arrow-left</v-icon></v-app-bar-nav-icon
     >
     <v-app-bar-title> Perfil do pet</v-app-bar-title>
@@ -101,9 +105,13 @@ const reloadPage = () => {
   <v-card elevation="10" class="">
     <v-card-title>Restrições</v-card-title>
     <v-card-text>
-      <p class="py-1 text-capitalize text-center" v-for="restricao in petStore.petDados.restricao">
-        {{ restricao }}
-      </p>
+      <v-virtual-scroll height="100" :items="petStore.petDados.restricao">
+        <template v-slot:default="{ item }">
+          <p class="py-1 text-capitalize text-left">
+            {{ item }}
+          </p>
+        </template>
+      </v-virtual-scroll>
     </v-card-text>
   </v-card>
 
@@ -112,7 +120,7 @@ const reloadPage = () => {
       size="x-large"
       @click="handleSignOut"
       rounded="xl"
-      color="#053026"
+      color="#fe8b05"
       block
       class="elevation-10 text-white"
     >
