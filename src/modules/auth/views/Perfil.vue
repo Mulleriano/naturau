@@ -107,6 +107,10 @@ const reloadPage = () => {
     <v-card-text>
       <v-virtual-scroll height="100" :items="petStore.petDados.restricao">
         <template v-slot:default="{ item }">
+          <p v-if="!item" class="text-grey-darken-2 font-italic">
+            Nenhuma restição
+          </p>
+
           <p class="py-1 text-capitalize text-left">
             {{ item }}
           </p>
@@ -115,7 +119,14 @@ const reloadPage = () => {
     </v-card-text>
   </v-card>
 
-  <v-sheet class="mx-auto mt-5 mb-10" width="80%" height="100px" color="transparent" position="fixed" location="bottom">
+  <v-sheet
+    class="mx-auto mt-5 mb-10"
+    width="80%"
+    height="100px"
+    color="transparent"
+    position="fixed"
+    location="bottom"
+  >
     <v-btn
       size="x-large"
       @click="handleSignOut"
