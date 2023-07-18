@@ -14,10 +14,6 @@ import {
 
 const storage = getStorage();
 const uploadedImgUrl = vueRef("");
-const metadata = {
-  size: Number,
-  name: "",
-};
 
 export const petStore = reactive({
   user: {},
@@ -50,42 +46,36 @@ export const petStore = reactive({
       { merge: true }
     );
   },
-  pegarPet(uid) {
-    console.log(uid);
-  },
-});
-
-export const imgStore = reactive({
-  img: () => {
-    onAuthStateChanged(getAuth(), (user) => {
-      const email = user.email;
-      const file = document.getElementById("image").files[0];
-      const storageRef = ref(storage, email);
-      const uploadTask = uploadBytesResumable(storageRef, file, metadata);
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log("Upload is " + progress + "% done");
-          switch (snapshot.state) {
-            case "paused":
-              console.log("Upload is paused");
-              break;
-            case "running":
-              console.log("Upload is running");
-              break;
-          }
-        },
-        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+  img() {
+    const file = document.getElementById("image").files[0];
+    const storageRef = ref(storage, this.user.email);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done");
+        switch (snapshot.state) {
+          case "paused":
+            console.log("Upload is paused");
+            break;
+          case "running":
+            console.log("Upload is running");
+            break;
+        }
+      },
+      getDownloadURL(uploadTask.snapshot.ref)
+        .then((url) => {
+          const uid = this.user.uid;
           uploadedImgUrl.value = url;
-          console.log(url);
-          const uid = user.uid;
-          console.log(uid);
           const usuarios = doc(db, "usuarios", uid);
           setDoc(usuarios, { profilePicture: url }, { merge: true });
         })
-      );
-    });
+        .catch((error) => {
+          alert("Algo deu errado, tente novamente");
+          location.reload();
+        })
+    );
   },
 });
