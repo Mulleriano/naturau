@@ -37,7 +37,7 @@ function corIcone(path) {
             :active="route.path.includes('perfil')"
             @click="this.$router.replace('/perfil')"
           >
-            <v-icon> mdi-paw </v-icon>
+            <v-icon :color="corIcone('/perfil')"> mdi-paw </v-icon>
           </v-btn>
         </v-bottom-navigation>
       </v-footer>
