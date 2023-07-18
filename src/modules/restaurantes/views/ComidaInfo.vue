@@ -3,6 +3,7 @@ import { onMounted, ref } from "vue";
 import { comidasStore } from "../store";
 import { useRoute, useRouter } from "vue-router";
 import { restStore } from "../store";
+import { petStore } from "@/modules/auth/store";
 
 const route = useRoute();
 const router = useRouter();
@@ -17,7 +18,8 @@ function voltar() {
 async function pedir() {
   loadingBtn.value = true;
   try {
-    await comidasStore.adicionarPedido(restStore.restaurante);
+    await petStore.pegarUser();
+    await comidasStore.adicionarPedido(petStore.user.uid);
     router.push("/pedidos");
   } catch (err) {
     console.log(err);
