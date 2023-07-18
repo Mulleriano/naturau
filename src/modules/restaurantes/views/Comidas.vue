@@ -10,7 +10,7 @@ onMounted(() => {
 });
 </script>
 <template>
-  <v-img src="/imgs/comidas.jpeg"></v-img>
+  <v-img src="/public/imgs/comidas.jpeg"></v-img>
   <v-card
     height="100%"
     width="100%"

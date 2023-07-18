@@ -59,7 +59,7 @@ const signInWithGoogle = () => {
         elevation="0"
         class="w-75 d-flex flex-column align-center"
       >
-        <v-img class="mx-auto" width="80%" src="/imgs/logo.png"></v-img>
+        <v-img class="mx-auto" width="80%" src="/public/imgs/logo.png"></v-img>
         <v-card-title>Login</v-card-title>
         <v-text-field
           variant="outlined"

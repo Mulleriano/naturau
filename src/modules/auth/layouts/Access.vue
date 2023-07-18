@@ -10,12 +10,12 @@
 
 <style>
 .bg {
-  background-image: url("/imgs/bg.jpg");
+  background-image: url("/public/imgs/bg.jpg");
   background-size: cover;
   background-position: center;
 }
 .bg-onda {
-  background-image: url("/imgs/bg-onda.png");
+  background-image: url("/public/imgs/bg-onda.png");
   background-size: contain;
 }
 </style>

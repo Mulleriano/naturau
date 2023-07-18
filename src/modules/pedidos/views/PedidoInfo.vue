@@ -64,7 +64,7 @@ onUnmounted(() => {
       </v-window-item>
     </v-window>
     <v-sheet align="center">
-      <v-img width="50%" src="/imgs/pedidos.jpg"></v-img>
+      <v-img width="50%" src="/public/imgs/pedidos.jpg"></v-img>
       <p class="w-50 text-grey text-center font-weight-bold">
         Humano, o pedido da Ivy está sendo preparado!
       </p>
