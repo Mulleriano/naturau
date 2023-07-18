@@ -1,6 +1,12 @@
 <script setup>
 import { onMounted } from "vue";
 import { petStore, imgStore } from "../store";
+import {useRouter} from "vue-router"
+const router = useRouter()
+
+function irPara(rota) {
+  router.push(rota)
+}
 
 onMounted(async () => {
   await petStore.pegarUser();
@@ -32,7 +38,7 @@ onMounted(async () => {
     </v-card>
     <v-btn
       size="large"
-      @click="this.$router.push('/naturau')"
+      @click="irPara('/naturau')"
       rounded="xl"
       color="#053026"
       location="bottom"
