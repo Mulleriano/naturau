@@ -7,6 +7,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { RouterLink, useRouter } from "vue-router";
+import { dadosPet } from "../api";
 
 const email = ref("");
 const password = ref("");
@@ -42,8 +43,12 @@ const login = () => {
 const signInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
-    .then((result) => {
-      router.push("/naturau");
+    .then(async (result) => {
+      const res = await dadosPet(result.user.uid);
+      if (res) {
+        router.push("/naturau");
+      }
+      router.push("/hello");
     })
     .catch((error) => {
       alert("Algo deu errado");
