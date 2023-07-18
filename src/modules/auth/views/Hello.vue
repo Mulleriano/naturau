@@ -14,7 +14,7 @@ function irPara(rota) {
       <h2 class="mb-2 text-white">Olá, humano.</h2>
       <p class="text-start text-h6 font-weight-regular text-white">
         Preparado para mudar a <br />
-        alimentação e invertir na saúde <br />
+        alimentação e investir na saúde <br />
         do seu melhor amigo?
       </p>
     </div>
