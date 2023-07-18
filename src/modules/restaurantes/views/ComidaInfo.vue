@@ -53,7 +53,7 @@ onMounted(async () => {
       style="top: 30%; right: 0"
       class="pb-4 rounded-xl elevation-10 d-flex justify-space-between align-center pa-3"
     >
-      <div class="w-50">
+      <div class="w-75">
         <v-card-title class="text-orange">
           Por {{ restStore.restaurante.nome }}
         </v-card-title>
@@ -62,7 +62,7 @@ onMounted(async () => {
           Distância {{ restStore.restaurante.distancia }}
         </v-card-subtitle>
       </div>
-      <div class="text-end pt-2 w-50">
+      <div class="text-end pt-2 w-25 mr-5">
         <v-rating
           size
           v-model="restStore.restaurante.avaliacoes"
