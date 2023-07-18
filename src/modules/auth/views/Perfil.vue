@@ -95,7 +95,7 @@ const reloadPage = () => {
       </div>
 
       <div class="w-50 text-right mr-4 pb-1">
-        <v-icon color="#8dd8c1" icon="mdi-pencil ma-2"></v-icon>
+        <!-- <v-icon color="#8dd8c1" icon="mdi-pencil ma-2"></v-icon> -->
         <p class="text-grey-lighten-1 text-capitalize font-weight-light pt-4">
           {{ petStore.petDados?.sexo }}
         </p>
