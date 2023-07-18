@@ -30,11 +30,12 @@ export const comidasStore = reactive({
       if (comidaId == comida.id) this.comida = comida;
     });
   },
-  async adicionarPedido() {
-    await pedidosStore.pegarPedidos();
+  async adicionarPedido(uid) {
+    await pedidosStore.pegarPedidos(uid);
     let numeroPedidos = pedidosStore.pedidos.length;
     const horario = new Date();
     const pedido = {
+      uid: uid,
       comidaId: this.comida.id,
       inicio: horario,
       status: "em andamento",
