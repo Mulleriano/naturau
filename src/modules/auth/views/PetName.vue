@@ -2,10 +2,11 @@
 import { ref } from "vue";
 import { petStore } from "../store";
 import { reactive } from "vue";
+import { onMounted } from "vue";
 import { useRouter } from "vue-router";
 
 const petName = ref("");
-const adress = ref("");
+const address = ref("");
 const router = useRouter();
 
 function irPara(rota) {
@@ -14,7 +15,25 @@ function irPara(rota) {
 
 const payload = reactive({
   petName: petName,
-  adress: adress,
+  address: address,
+});
+
+const nameRules = (value) => {
+  if (!value) {
+    return "Insira o nome do pet";
+  }
+  return true;
+};
+
+const addressRules = (value) => {
+  if (!value) {
+    return "Insira seu endereço";
+  }
+  return true;
+};
+
+onMounted(async () => {
+  await petStore.pegarUser();
 });
 </script>
 
@@ -35,18 +54,20 @@ const payload = reactive({
         rounded="pill"
         color="#2a6141"
         v-model="petName"
+        :rules="[nameRules]"
         label="Nome do pet"
         clearable
         hide-details="auto"
         class="w-100 mt-4 text-green-darken-4"
-      >
-      </v-text-field>
+      ></v-text-field>
+
       <h3 class="text-teal-darken-4">E onde vocês moram?</h3>
       <v-text-field
         variant="outlined"
         rounded="pill"
         color="#053026"
-        v-model="text"
+        v-model="address"
+        :rules="[addressRules]"
         label="Endereço do pet"
         clearable
         hide-details="auto"
@@ -56,7 +77,9 @@ const payload = reactive({
     </v-card>
     <v-btn
       size="large"
+      :disabled="!petName || !address"
       @click="petStore.proximo(payload), irPara('/pet-detail')"
+      :rules="[addressRules]"
       rounded="xl"
       color="#053026"
       location="bottom"

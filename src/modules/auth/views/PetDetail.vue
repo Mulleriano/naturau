@@ -2,10 +2,18 @@
 import { petStore } from "../store";
 import { reactive } from "vue";
 import { ref } from "vue";
-import { useRouter } from "vue-router";
+import { onMounted } from "vue";
+import { useRoute } from "vue-router";
+
+const router = useRoute();
 
 const restricao = ref("");
-const router = useRouter();
+const user = ref("");
+
+onMounted(async () => {
+  await petStore.pegarUser();
+});
+import { useRouter } from "vue-router";
 
 const payload = reactive({
   tipo: "",
@@ -38,7 +46,7 @@ function handleDetail(toggle, name, value) {
   >
     <h2 class="mb-4 text-teal-darken-3">
       Nosso papo agora <br />
-      é com X{{ petname }}
+      é com {{ petStore.petDados?.petName }}
     </h2>
     <v-item-group mandatory>
       <p class="text-body-1">Qual tipo de pet você é?</p>
@@ -135,3 +143,4 @@ function handleDetail(toggle, name, value) {
     >Próximo</v-btn
   >
 </template>
+

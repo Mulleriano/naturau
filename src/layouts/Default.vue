@@ -38,6 +38,12 @@ function corIcone(path) {
           >
             <v-icon :color="corIcone('/pedidos')"> mdi-list-box </v-icon>
           </v-btn>
+          <v-btn
+            :active="route.path.includes('perfil')"
+            @click="this.$router.replace('/perfil')"
+          >
+            <v-icon :color="corIcone('/perfil')"> mdi-paw </v-icon>
+          </v-btn>
         </v-bottom-navigation>
       </v-card>
     </v-main>

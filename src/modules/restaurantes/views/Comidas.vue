@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted } from "vue";
 import { comidasStore } from "../store";
+import { petStore } from "@/modules/auth/store";
 import ComidasLista from "../components/ComidasLista.vue";
 import { useRoute } from "vue-router";
 
@@ -20,7 +21,7 @@ onMounted(() => {
     class="rounded-t-xl elevation-10 d-flex flex-column"
   >
     <v-card-title class="font-weight-bold text-orange my-5">
-      Bateu fominha Ivy?
+      Bateu fominha {{ petStore.petDados?.petName }}?
     </v-card-title>
     <ComidasLista />
   </v-card>

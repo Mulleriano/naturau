@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted } from "vue";
 import { restStore } from "../store";
+import { petStore } from "@/modules/auth/store";
 import RestList from "../components/RestList.vue";
 import { ref } from "vue";
 
@@ -22,7 +23,7 @@ onMounted(async () => {
   </v-app-bar>
 
   <v-card align="center" class="py-4" v-if="!loading">
-    <v-card-title class="text-orange">Onde vai comer hoje Ivy?</v-card-title>
+    <v-card-title class="text-orange">Onde vai comer hoje {{ petStore.petDados?.petName }}?</v-card-title>
 
     <RestList />
   </v-card>
