@@ -10,6 +10,10 @@ const restId = route.params.restId;
 const comidaId = route.params.comidaId;
 let loadingBtn = ref(false);
 
+function voltar() {
+  router.go(-1);
+}
+
 async function pedir() {
   loadingBtn.value = true;
   try {
@@ -30,7 +34,7 @@ onMounted(async () => {
 </script>
 <template>
   <v-app-bar>
-    <v-app-bar-nav-icon @click="this.$router.go(-1)"
+    <v-app-bar-nav-icon @click="voltar"
       ><v-icon>mdi-arrow-left</v-icon></v-app-bar-nav-icon
     >
     <v-app-bar-title> {{ comidasStore.comida?.titulo }} </v-app-bar-title>

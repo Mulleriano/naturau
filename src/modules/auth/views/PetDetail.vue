@@ -1,25 +1,31 @@
 <script setup>
-import {petStore} from "../store"
+import { petStore } from "../store";
 import { reactive } from "vue";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 
 const restricao = ref("");
+const router = useRouter();
 
-const payload = reactive({ 
+const payload = reactive({
   tipo: "",
   sexo: "",
   sn: "",
   restricao: [],
-})
+});
 
-function arrayRestricao(restricao){
-  let semVirgula = restricao.replaceAll(",", "")
-  payload.restricao = semVirgula.split(" ")
+function irPara(rota) {
+  router.push(rota);
 }
 
-function handleDetail(toggle, name, value){
+function arrayRestricao(restricao) {
+  let semVirgula = restricao.replaceAll(",", "");
+  payload.restricao = semVirgula.split(" ");
+}
+
+function handleDetail(toggle, name, value) {
   toggle();
-  payload[name]=value
+  payload[name] = value;
 }
 </script>
 
@@ -48,7 +54,7 @@ function handleDetail(toggle, name, value){
         </v-item>
         <v-item v-slot="{ isSelected, toggle }">
           <v-btn
-            @click="handleDetail(toggle,'tipo', 'cachorro')"
+            @click="handleDetail(toggle, 'tipo', 'cachorro')"
             :color="isSelected ? '#8dd8c1' : 'white'"
             rounded="xl"
             class="ma-5"
@@ -118,7 +124,9 @@ function handleDetail(toggle, name, value){
   </v-card>
   <v-btn
     size="large"
-    @click="(arrayRestricao(restricao)), (petStore.fim(payload)), (this.$router.push('/naturau'))"
+    @click="
+      arrayRestricao(restricao), petStore.fim(payload), irPara('/naturau')
+    "
     rounded="xl"
     color="#8ad7c0"
     location="bottom"

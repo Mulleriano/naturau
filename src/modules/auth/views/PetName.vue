@@ -2,9 +2,15 @@
 import { ref } from "vue";
 import { petStore } from "../store";
 import { reactive } from "vue";
+import { useRouter } from "vue-router";
 
 const petName = ref("");
 const adress = ref("");
+const router = useRouter();
+
+function irPara(rota) {
+  router.push(rota);
+}
 
 const payload = reactive({
   petName: petName,
@@ -50,7 +56,7 @@ const payload = reactive({
     </v-card>
     <v-btn
       size="large"
-      @click="petStore.proximo(payload), this.$router.push('/pet-detail')"
+      @click="petStore.proximo(payload), irPara('/pet-detail')"
       rounded="xl"
       color="#053026"
       location="bottom"

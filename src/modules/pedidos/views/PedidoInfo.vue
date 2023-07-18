@@ -31,7 +31,7 @@ onMounted(async () => {
   </v-sheet>
 
   <v-app-bar>
-    <v-app-bar-nav-icon @click="this.$router.push('/pedidos')"
+    <v-app-bar-nav-icon @click="irPara('/pedidos')"
       ><v-icon>mdi-arrow-left</v-icon></v-app-bar-nav-icon
     >
     <v-app-bar-title>Detalhes do pedido</v-app-bar-title>
