@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted } from "vue";
-import { petStore } from "../store";
+import { petStore, imgStore } from "../store";
 
 onMounted(async () => {
   await petStore.pegarUser();
@@ -23,7 +23,7 @@ onMounted(async () => {
           prepend-icon="mdi-camera"
           ref="file"
           id="image"
-          @change="petStore.img()"
+          @change="imgStore.img()"
           type="file"
           clear-icon="w-100"
         ></v-file-input>

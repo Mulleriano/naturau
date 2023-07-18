@@ -3,7 +3,7 @@ import { onMounted } from "vue";
 import { getAuth, signOut } from "firebase/auth";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
-import { petStore } from "../store";
+import { petStore, imgStore } from "../store";
 
 const router = useRouter();
 
@@ -64,7 +64,7 @@ const reloadPage = () => {
             prepend-icon="mdi-camera"
             ref="file"
             id="image"
-            @change="petStore.img()"
+            @change="imgStore.img()"
             type="file"
             clear-icon="w-100"
           ></v-file-input>
@@ -115,7 +115,7 @@ const reloadPage = () => {
     </v-card-text>
   </v-card>
 
-  <v-sheet class="mx-auto mt-5" width="80%" height="100px" color="transparent">
+  <v-sheet class="mx-auto mt-5 mb-10" width="80%" height="100px" color="transparent" position="fixed" location="bottom">
     <v-btn
       size="x-large"
       @click="handleSignOut"
