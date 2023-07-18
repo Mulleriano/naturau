@@ -32,7 +32,7 @@ export const comidasStore = reactive({
   },
   async adicionarPedido() {
     await pedidosStore.pegarPedidos();
-    let numeroPedidos = pedidosStore.pedidos.emAndamento.length;
+    let numeroPedidos = pedidosStore.pedidos.length;
     const horario = new Date();
     const pedido = {
       comidaId: this.comida.id,

@@ -19,7 +19,7 @@ onMounted(async () => {
   </v-sheet>
 
   <v-app-bar sticky>
-    <v-img src="/imgs/logo.png"></v-img>
+    <v-img src="/public/imgs/logo.png"></v-img>
   </v-app-bar>
 
   <v-card align="center" class="py-4" v-if="!loading">
