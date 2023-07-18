@@ -11,18 +11,20 @@ const route = useRoute();
 const id = route.params.id;
 const tab = ref(null);
 let data = ref("");
+let loading = ref(true);
 
 onMounted(async () => {
-  pedidosStore.loadingDetalhes = true;
+  loading.value = true;
   await pedidosStore.pegarPedido(id);
   data.value = await converter();
-});
-
-onUnmounted(() => {
-  pedidosStore.loadingDetalhes = false;
+  loading.value = false;
 });
 </script>
 <template>
+  <v-sheet v-if="loading" position="fixed" location="center">
+    <v-progress-circular color="#8dd8c1" indeterminate></v-progress-circular>
+  </v-sheet>
+
   <v-app-bar>
     <v-app-bar-nav-icon @click="this.$router.push('/pedidos')"
       ><v-icon>mdi-arrow-left</v-icon></v-app-bar-nav-icon
@@ -30,14 +32,7 @@ onUnmounted(() => {
     <v-app-bar-title>Detalhes do pedido</v-app-bar-title>
   </v-app-bar>
 
-  <v-sheet position="fixed" location="center">
-    <v-progress-circular
-      indeterminate
-      v-show="pedidosStore.loadingDetalhes"
-    ></v-progress-circular>
-  </v-sheet>
-
-  <v-container v-show="!pedidosStore.loadingDetalhes">
+  <v-container v-show="!loading">
     <v-card class="pa-6">
       <v-row>
         <v-col align="left" class="text-grey-darken-2">Feito em</v-col>
