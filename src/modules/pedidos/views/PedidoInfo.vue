@@ -1,16 +1,21 @@
 <script setup>
 import { onMounted } from "vue";
 import { pedidosStore } from "../store";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { ref } from "vue";
 import Timeline from "../components/Timeline.vue";
 import { converter } from "../composable/converterHora";
 import { onUnmounted } from "vue";
 
 const route = useRoute();
+const router = useRouter();
 const id = route.params.id;
 const tab = ref(null);
 let data = ref("");
+
+function irPara(rota) {
+  router.push(rota);
+}
 
 onMounted(async () => {
   pedidosStore.loadingDetalhes = true;

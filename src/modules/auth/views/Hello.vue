@@ -1,4 +1,12 @@
-<script setup></script>
+<script setup>
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+function irPara(rota) {
+  router.push(rota);
+}
+</script>
 
 <template>
   <v-container class="pl-8 h-100 w-100 d-flex flex-column justify-center bg">
@@ -16,7 +24,7 @@
     density="compact"
     icon="mdi-arrow-right-thin"
     size="x-large"
-    @click="this.$router.push('/pet-name')"
+    @click="irPara('/pet-name')"
     variant="plain"
     location="bottom"
     position="fixed"
