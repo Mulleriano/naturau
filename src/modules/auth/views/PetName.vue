@@ -1,5 +1,18 @@
 <script setup>
-//
+import { ref } from "vue";
+import {petStore} from "../store"
+import { reactive } from "vue";
+
+const petName = ref("");
+const adress = ref("");
+
+
+const payload = reactive({ 
+  petName: petName,
+    adress: adress,  
+})
+
+
 </script>
 
 <template>
@@ -15,14 +28,14 @@
         qual o nome do <br />seu pet?
       </h1>
       <v-text-field
-        variant="outlined"
-        rounded="pill"
-        color="#2a6141"
-        v-model="text"
-        label="Nome do pet"
-        clearable
-        hide-details="auto"
-        class="w-100 mt-4 text-green-darken-4"
+      variant="outlined"
+      rounded="pill"
+      color="#2a6141"
+      v-model="petName"
+      label="Nome do pet"
+      clearable
+      hide-details="auto"
+      class="w-100 mt-4 text-green-darken-4"
       >
       </v-text-field>
       <h3 class="text-teal-darken-4">E onde vocês moram?</h3>
@@ -43,10 +56,22 @@
       @click="this.$router.push('/pet-detail')"
       rounded="xl"
       color="#053026"
-      location="bottom"
-      position="fixed"
-      class="mb-16 text-white w-50"
-      >Próximo</v-btn
+      v-model="adress"
+      label="Endereço do pet"
+      clearable
+      hide-details="auto"
+      class="w-100 mt-4 text-green-darken-4"
     >
-  </v-container>
+    </v-text-field>
+  </v-card>
+  <v-btn
+    size="large"
+    @click=" (petStore.proximo(payload)), (this.$router.push('/pet-detail'))"
+    rounded="xl"
+    color="#053026"
+    location="bottom"
+    position="fixed"
+    class="mb-16 text-white w-50"
+    >Próximo</v-btn
+  >
 </template>
