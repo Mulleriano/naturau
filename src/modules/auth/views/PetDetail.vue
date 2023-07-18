@@ -118,7 +118,7 @@ function handleDetail(toggle, name, value){
   </v-card>
   <v-btn
     size="large"
-    @click="(petStore.fim(payload)), (this.$router.push('/naturau')), (arrayRestricao(restricao))"
+    @click="(arrayRestricao(restricao)), (petStore.fim(payload)), (this.$router.push('/naturau'))"
     rounded="xl"
     color="#8ad7c0"
     location="bottom"

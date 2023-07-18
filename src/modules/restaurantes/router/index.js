@@ -21,9 +21,14 @@ export const routes = [
         component: () => import("@/modules/restaurantes/views/Comidas.vue"),
       },
       {
-        path: "/comidas/:id",
+        path: "/comidas/:restId",
         name: "ComidasRestaurante",
         component: () => import("@/modules/restaurantes/views/Comidas.vue"),
+      },
+      {
+        path: "/comidas/:restId/:comidaId",
+        name: "ComidaInfo",
+        component: () => import("../views/ComidaInfo.vue"),
       },
     ],
   },
@@ -42,7 +47,7 @@ const getCurrentUser = () => {
   });
 };
 
-router.beforeEach(async(to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (await getCurrentUser()) {
       next();
