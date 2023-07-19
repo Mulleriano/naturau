@@ -2,7 +2,7 @@
 import { onMounted, ref } from "vue";
 import { pedidosStore } from "../store";
 import { useRouter } from "vue-router";
-import { load } from "webfontloader";
+import { petStore } from "@/modules/auth/store";
 
 const router = useRouter();
 let loading = ref(false);
@@ -26,7 +26,7 @@ function filtrarPedidos(filtro) {
 
 onMounted(async () => {
   loading.value = true;
-  await pedidosStore.pegarPedidos();
+  await pedidosStore.pegarPedidos(petStore.user.uid);
   loading.value = false;
 });
 </script>
@@ -69,7 +69,7 @@ onMounted(async () => {
       v-if="filtrarPedidos('concluidos').length == 0"
       class="text-grey-darken-2 font-italic"
     >
-      Você ainda não fez nenhum pedido
+      Nenhum pedido concluido
     </p>
 
     <v-card

@@ -18,7 +18,7 @@ const uploadedImgUrl = vueRef("");
 export const petStore = reactive({
   user: {},
   petDados: {},
-  async pegarUser() {
+  pegarUser() {
     onAuthStateChanged(getAuth(), async (user) => {
       this.user = user;
       const res = await dadosPet(user.uid);

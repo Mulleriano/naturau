@@ -9,13 +9,15 @@ import {
   where,
 } from "firebase/firestore";
 
-export async function listaPedidos() {
+export async function listaPedidos(uid) {
   let pedidos = [];
 
-  const queryPedidos = await getDocs(query(collection(db, "pedidos")));
+  const queryPedidos = await getDocs(
+    query(collection(db, "pedidos"), where("uid", "==", uid))
+  );
 
   queryPedidos.forEach((doc) => {
-    pedidos.push({ ...doc.data(), id: doc.id });
+    pedidos.push({ ...doc.data(), id: doc.id, uid: uid });
   });
   return pedidos;
 }
