@@ -45,7 +45,7 @@ const reloadPage = () => {
     cover
     :src="petStore.petDados?.profilePicture"
   >
-    <v-btn
+    <!-- <v-btn
       icon="mdi-pencil"
       size="small"
       alt="Editar foto"
@@ -74,7 +74,7 @@ const reloadPage = () => {
           <v-btn @click="reloadPage()">Salvar</v-btn>
         </v-card-actions>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
     <v-card
       position="absolute"
       location="bottom"
