@@ -15,7 +15,13 @@ function corIcone(path) {
 
 <template>
   <v-app>
-    <v-system-bar></v-system-bar>
+    <v-system-bar color="grey-darken-4">
+      <v-icon icon="mdi-wifi-strength-4"></v-icon>
+      <v-icon icon="mdi-signal" class="ms-2"></v-icon>
+      <v-icon icon="mdi-battery" class="ms-2"></v-icon>
+
+      <span class="ms-2">3:13PM</span>
+    </v-system-bar>
     <v-main>
       <router-view />
       <v-card>
